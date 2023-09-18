@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.basictextfield2playground.form.FormScreen
+import com.example.basictextfield2playground.email.TextBoxForm
 import com.example.basictextfield2playground.login.LoginScreen
 import com.example.basictextfield2playground.navigation.Screen
 import com.example.basictextfield2playground.ui.theme.BasicTextField2PlaygroundTheme
@@ -62,7 +62,7 @@ fun AppMainComposable() {
                     )
                 })
             }
-            composable(Screen.Form.route) { FormScreen() }
+            composable(Screen.Form.route) { TextBoxForm() }
         }
     }
 }

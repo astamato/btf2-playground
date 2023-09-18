@@ -13,6 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
+/***
+ * Showcases basic API usage
+ * basic styling just like BTF2 with textStyle, decoration box, cursor brush
+ *
+ *
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LoginScreen(
@@ -24,6 +30,11 @@ fun LoginScreen(
         val username = TextFieldState(initialText = "")
         BasicTextField2(state = username)
 
+        // showcase textObfuscationMode
+        /***
+         * PasswordRevealFilter is an example of input transformation
+         * MaxLengthFilter is an example of input transformation
+         */
         val password = TextFieldState(initialText = "")
         BasicSecureTextField(state = password)
 
