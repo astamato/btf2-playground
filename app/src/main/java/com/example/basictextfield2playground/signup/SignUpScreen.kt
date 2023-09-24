@@ -1,4 +1,4 @@
-package com.example.basictextfield2playground.login
+package com.example.basictextfield2playground.signup
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column

@@ -15,7 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.basictextfield2playground.email.TextBoxForm
-import com.example.basictextfield2playground.login.LoginScreen
+import com.example.basictextfield2playground.login.LoginScreenContent
 import com.example.basictextfield2playground.navigation.Screen
 import com.example.basictextfield2playground.ui.theme.BasicTextField2PlaygroundTheme
 
@@ -56,7 +56,7 @@ fun AppMainComposable() {
             Modifier.padding(innerPadding)
         ) {
             composable(Screen.Login.route) {
-                LoginScreen(onLoginSuccess = {
+                LoginScreenContent(onLoginSuccess = {
                     navController.navigate(
                         Screen.Form.route
                     )

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BasicTextField2Playground</string>
+    <!--Login screen-->
+    <string name="login_button">Log in</string>
 </resources>
