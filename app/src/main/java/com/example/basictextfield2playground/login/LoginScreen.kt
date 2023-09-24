@@ -10,7 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text2.BasicSecureTextField
 import androidx.compose.foundation.text2.BasicTextField2
-import androidx.compose.foundation.text2.input.TextFieldState
+import androidx.compose.foundation.text2.input.rememberTextFieldState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -26,6 +26,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.basictextfield2playground.ui.theme.textStyleBodyLarge
 
+val modifierBTFBorder = Modifier
+    .fillMaxWidth()
+    .border(1.dp, Color.Gray, shape = RoundedCornerShape(8.dp))
+    .padding(8.dp)
+
+
+/**
+ * STEP 3
+ */
+
 /***
  * Showcases basic API usage
  * basic styling just like BTF2 with textStyle, decoration box, cursor brush
@@ -40,8 +50,10 @@ fun LoginScreenContent(
 ) {
     LoginScreenScaffold {
 
-        val username = TextFieldState(initialText = "")
+//        val username = TextFieldState(initialText = "")
+        val username = rememberTextFieldState(initialText = "")
         BasicTextField2(
+            modifier = modifierBTFBorder,
             state = username,
             textStyle = textStyleBodyLarge,
 //            decorationBox = @Composable {
@@ -75,13 +87,19 @@ fun LoginScreenContent(
 //            }
         )
 
+        Spacer(modifier = Modifier.height(4.dp))
+
         // showcase textObfuscationMode
         /***
          * PasswordRevealFilter is an example of input transformation
          * MaxLengthFilter is an example of input transformation
          */
-        val password = TextFieldState(initialText = "")
-        BasicSecureTextField(state = password, textStyle = textStyleBodyLarge)
+        val password = rememberTextFieldState(initialText = "")
+        BasicSecureTextField(
+            modifier = modifierBTFBorder,
+            state = password,
+            textStyle = textStyleBodyLarge
+        )
     }
 }
 
@@ -127,14 +145,11 @@ fun LoginScreenBTF(
     modifier: Modifier = Modifier,
     onLoginSuccess: () -> Unit = {},
 ) {
-    val modifierBTF = Modifier
-        .fillMaxWidth()
-        .border(1.dp, Color.Gray, shape = RoundedCornerShape(8.dp))
-        .padding(8.dp)
+
     LoginScreenScaffold {
         var username by remember { mutableStateOf("") }
         BasicTextField(
-            modifier = modifier.then(modifierBTF),
+            modifier = modifier.then(modifierBTFBorder),
             value = username,
             onValueChange = { username = it }
         )
@@ -143,7 +158,7 @@ fun LoginScreenBTF(
 
         var password by remember { mutableStateOf("") }
         BasicTextField(
-            modifier = modifier.then(modifierBTF),
+            modifier = modifier.then(modifierBTFBorder),
             value = password,
             onValueChange = { password = it },
             visualTransformation = PasswordVisualTransformation()

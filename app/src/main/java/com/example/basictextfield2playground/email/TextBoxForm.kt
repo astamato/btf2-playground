@@ -1,5 +1,7 @@
 package com.example.basictextfield2playground.email
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.text2.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 
 /**
@@ -9,8 +11,13 @@ import androidx.compose.runtime.Composable
  * Showcase TextField buffer?
  *
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TextBoxForm() {
+
+    val textBox = rememberTextFieldState(initialText = "")
+
+
 
     
 }

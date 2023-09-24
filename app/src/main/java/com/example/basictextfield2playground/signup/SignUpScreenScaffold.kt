@@ -1,4 +1,4 @@
-package com.example.basictextfield2playground.login
+package com.example.basictextfield2playground.signup
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,38 +8,42 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.basictextfield2playground.R
+import com.example.basictextfield2playground.login.TermsAndConditionsLabel
 import com.example.basictextfield2playground.uicomponents.MainButton
 
+/**
+ * Showcases state observation, viewmodel
+ */
 @Composable
 @Preview(showBackground = true)
-fun LoginScreenScaffold(
+fun SignUpScreenScaffold(
     modifier: Modifier = Modifier,
-    onLoginSuccess: () -> Unit = {},
     textFieldSlot: @Composable ColumnScope.() -> Unit = {},
 ) {
     Column(
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
         Text(
-            stringResource(id = R.string.login_title),
+            stringResource(id = R.string.sign_up_title),
             modifier = Modifier.padding(bottom = 8.dp),
             style = MaterialTheme.typography.titleMedium
         )
         textFieldSlot()
+        TermsAndConditionsLabel()
         MainButton(
-            onLoginSuccess,
-            modifier = Modifier.align(CenterHorizontally),
-            stringResource(id = R.string.login_button)
+            {},
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            stringResource(id = R.string.sign_up_button)
         )
     }
 }
