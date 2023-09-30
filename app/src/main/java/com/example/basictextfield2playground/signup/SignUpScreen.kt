@@ -3,9 +3,12 @@ package com.example.basictextfield2playground.signup
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text2.BasicSecureTextField
 import androidx.compose.foundation.text2.BasicTextField2
+import androidx.compose.foundation.text2.input.TextFieldLineLimits
 import androidx.compose.foundation.text2.input.rememberTextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
@@ -14,6 +17,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -35,13 +39,20 @@ fun SignUpScreen(
 ) {
     SignUpScreenScaffold {
 
-        Row {
+        Row(modifier = modifier.fillMaxWidth()) {
             BasicTextField2(
                 state = signUpViewModel.username,
-                modifier = modifierBTFBorder,
-                textStyle = textStyleBodyLarge
+                modifier = modifierBTFBorder.weight(.9f),
+                textStyle = textStyleBodyLarge,
+                lineLimits = TextFieldLineLimits.SingleLine,
             )
-            IconButton(onClick = { signUpViewModel.clearField() }) {
+            IconButton(
+                onClick = { signUpViewModel.clearField() },
+                modifier
+                    .wrapContentSize()
+                    .align(CenterVertically)
+                    .weight(.1f)
+            ) {
                 Icon(Icons.Filled.Clear, "content description")
             }
         }
@@ -68,7 +79,7 @@ fun SignUpScreen(
          */
         val password = rememberTextFieldState(initialText = "")
         BasicSecureTextField(
-            modifier = modifierBTFBorder,
+            modifier = modifierBTFBorder.fillMaxWidth(),
             state = password,
             textStyle = textStyleBodyLarge
         )

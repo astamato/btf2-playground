@@ -3,6 +3,7 @@ package com.example.basictextfield2playground.signup
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.text2.input.TextFieldState
 import androidx.compose.foundation.text2.input.selectAll
+import androidx.compose.foundation.text2.input.setTextAndSelectAll
 import androidx.compose.foundation.text2.input.textAsFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -37,7 +38,9 @@ class SignUpViewModel : ViewModel() {
 
     fun clearField() {
         username.edit {
-
+            replace(0, length, "")
         }
     }
 }
+
+
