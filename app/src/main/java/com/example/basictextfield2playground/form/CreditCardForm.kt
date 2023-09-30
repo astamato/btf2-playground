@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text2.BasicTextField2
+import androidx.compose.foundation.text2.input.InputTransformation
 import androidx.compose.foundation.text2.input.TextFieldLineLimits
+import androidx.compose.foundation.text2.input.maxLengthInChars
 import androidx.compose.foundation.text2.input.rememberTextFieldState
-import androidx.compose.material3.Text
+import androidx.compose.foundation.text2.input.then
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -39,7 +41,8 @@ fun CreditCardForm(modifier: Modifier = Modifier) {
         BasicTextField2(
             creditCardNumber,
             lineLimits = TextFieldLineLimits.SingleLine,
-            modifier = modifierBTFBorder.fillMaxWidth()
+            modifier = modifierBTFBorder.fillMaxWidth(),
+            inputTransformation = OnlyDigitsTransformation
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -54,11 +57,16 @@ fun CreditCardForm(modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.width(8.dp))
 
-            val securityNumber = rememberTextFieldState(initialText = "")
+            val cvv = rememberTextFieldState(initialText = "")
             BasicTextField2(
-                securityNumber,
+                cvv,
                 lineLimits = TextFieldLineLimits.SingleLine,
-                modifier = modifierBTFBorder.weight(.5f)
+                modifier = modifierBTFBorder.weight(.5f),
+                inputTransformation = OnlyDigitsTransformation.then(
+                    InputTransformation.maxLengthInChars(
+                        3
+                    )
+                )
             )
         }
     }
