@@ -2,6 +2,7 @@ package com.example.basictextfield2playground.signup
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.text2.input.TextFieldState
+import androidx.compose.foundation.text2.input.selectAll
 import androidx.compose.foundation.text2.input.textAsFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,17 +12,18 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 
-@OptIn(ExperimentalCoroutinesApi::class,ExperimentalFoundationApi::class)
+@OptIn(ExperimentalCoroutinesApi::class, ExperimentalFoundationApi::class)
 class SignUpViewModel : ViewModel() {
 
-private val signUpRepository = SignUpRepository()
-
+    private val signUpRepository = SignUpRepository()
 
     var username = TextFieldState("")
         private set
 
+    // How to make this part of the rest of the ui state?
+
     val userNameHasError: StateFlow<Boolean> =
-       username.textAsFlow()
+        username.textAsFlow()
             .mapLatest { signUpRepository.isUsernameAvailable(it.compositionInChars.toString()) }
             .stateIn(
                 scope = viewModelScope,
@@ -30,8 +32,12 @@ private val signUpRepository = SignUpRepository()
             )
 
 //    fun updateUsername(input: String) {
-//        username.edit {
 //
-//        }
 //    }
+
+    fun clearField() {
+        username.edit {
+
+        }
+    }
 }

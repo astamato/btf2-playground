@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
  * Showcases a very long text, with styles
  * Showcases multiline
  * Showcase search by keyword with hoisted scroll state
- * Showcase TextField buffer?
+ * Showcase TextField buffer? manual/declarative editing?
  *
  */
 @OptIn(ExperimentalFoundationApi::class)

@@ -1,12 +1,9 @@
 package com.example.basictextfield2playground.login
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text2.BasicSecureTextField
 import androidx.compose.foundation.text2.BasicTextField2
@@ -20,17 +17,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import com.example.basictextfield2playground.uicomponents.modifierBTFBorder
 import com.example.basictextfield2playground.ui.theme.textStyleBodyLarge
-
-val modifierBTFBorder = Modifier
-    .fillMaxWidth()
-    .border(1.dp, Color.Gray, shape = RoundedCornerShape(8.dp))
-    .padding(8.dp)
-
 
 /**
  * STEP 3
@@ -42,7 +33,7 @@ val modifierBTFBorder = Modifier
  */
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
-@Preview(showBackground = true)
+@PreviewLightDark
 fun LoginScreenContent(
     modifier: Modifier = Modifier,
     onLoginSuccess: () -> Unit = {},
@@ -107,7 +98,7 @@ fun LoginScreenContent(
  * STEP 1
  */
 @Composable
-@Preview(showBackground = true)
+@PreviewLightDark
 fun LoginScreenTF(
     modifier: Modifier = Modifier,
     onLoginSuccess: () -> Unit = {},
@@ -140,7 +131,7 @@ fun LoginScreenTF(
  * STEP 2
  */
 @Composable
-@Preview(showBackground = true)
+@PreviewLightDark
 fun LoginScreenBTF(
     modifier: Modifier = Modifier,
     onLoginSuccess: () -> Unit = {},

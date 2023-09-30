@@ -1,8 +1,9 @@
 package com.example.basictextfield2playground.navigation
 
+@Deprecated("Run each screen from preview")
 sealed class Screen(
     val route: String
 ) {
-    object Login : Screen("Login")
-    object Form : Screen("form")
+    data object Login : Screen("Login")
+    data object Form : Screen("form")
 }

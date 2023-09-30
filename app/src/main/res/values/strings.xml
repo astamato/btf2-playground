@@ -6,4 +6,8 @@
     <!--Sign up screen-->
     <string name="sign_up_button">Sign up</string>
     <string name="sign_up_title">Sign up with us</string>
+
+    <string name="credit_card_details">Credit card details</string>
+
+    <string name="post_code">Billing address</string>
 </resources>

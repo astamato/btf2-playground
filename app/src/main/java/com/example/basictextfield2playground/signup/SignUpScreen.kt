@@ -1,22 +1,26 @@
 package com.example.basictextfield2playground.signup
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text2.BasicSecureTextField
 import androidx.compose.foundation.text2.BasicTextField2
 import androidx.compose.foundation.text2.input.rememberTextFieldState
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.basictextfield2playground.login.modifierBTFBorder
+import com.example.basictextfield2playground.uicomponents.modifierBTFBorder
 import com.example.basictextfield2playground.ui.theme.textStyleBodyLarge
 
 /**
@@ -24,18 +28,23 @@ import com.example.basictextfield2playground.ui.theme.textStyleBodyLarge
  */
 @Composable
 @OptIn(ExperimentalFoundationApi::class)
-@Preview(showBackground = true)
+@PreviewLightDark
 fun SignUpScreen(
     modifier: Modifier = Modifier,
     signUpViewModel: SignUpViewModel = viewModel()
 ) {
     SignUpScreenScaffold {
 
-        BasicTextField2(
-            modifier = modifierBTFBorder,
-            state = signUpViewModel.username,
-            textStyle = textStyleBodyLarge
-        )
+        Row {
+            BasicTextField2(
+                state = signUpViewModel.username,
+                modifier = modifierBTFBorder,
+                textStyle = textStyleBodyLarge
+            )
+            IconButton(onClick = { signUpViewModel.clearField() }) {
+                Icon(Icons.Filled.Clear, "content description")
+            }
+        }
 
         val userNameHasError by signUpViewModel.userNameHasError.collectAsStateWithLifecycle()
 

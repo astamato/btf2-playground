@@ -9,15 +9,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.basictextfield2playground.R
 
+val fontFamilyDefault = FontFamily(
+    Font(R.font.googlesans_regular),
+    Font(R.font.googlesans_bold, FontWeight.Bold),
+    Font(R.font.googlesans_italic, FontWeight.Normal, FontStyle.Italic),
+    Font(R.font.googlesans_bolditalic, FontWeight.Bold, FontStyle.Italic),
+    Font(R.font.googlesans_medium, FontWeight.Medium),
+    Font(R.font.googlesans_mediumitalic, FontWeight.Medium, FontStyle.Italic),
+)
+
 val textStyleDefault = TextStyle(
-    fontFamily = FontFamily(
-        Font(R.font.googlesans_regular),
-        Font(R.font.googlesans_bold, FontWeight.Bold),
-        Font(R.font.googlesans_italic, FontWeight.Normal, FontStyle.Italic),
-        Font(R.font.googlesans_bolditalic, FontWeight.Bold, FontStyle.Italic),
-        Font(R.font.googlesans_medium, FontWeight.Medium),
-        Font(R.font.googlesans_mediumitalic, FontWeight.Medium, FontStyle.Italic),
-    )
+    fontFamily = fontFamilyDefault
 )
 
 val textStyleGoogleSansTextDefault = TextStyle(
@@ -40,7 +42,7 @@ val textStyleBodyLarge = textStyleDefault.copy(
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-    bodyLarge = textStyleBodyLarge
+    bodyLarge = textStyleBodyLarge,
     /* Other default text styles to override
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
