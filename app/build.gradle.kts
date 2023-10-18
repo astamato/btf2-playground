@@ -48,7 +48,7 @@ android {
 }
 
 dependencies {
-    val composeVersion = "1.6.0-SNAPSHOT"
+    val composeVersion = "1.6.0-alpha07"
     val lifecycleVersion = "2.6.2"
     val navVersion = "2.7.2"
 

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
@@ -78,35 +79,44 @@ fun TextBoxForm(modifier: Modifier = Modifier) {
                 textStyle = TextStyle(fontSize = 16.sp),
                 lineLimits = TextFieldLineLimits.SingleLine,
             )
-Button(
-    modifier = Modifier.padding(start = 8.dp),
-    onClick = {
-        val target = search.text
 
-        val results =
-            findAllSubstringOccurrences(textBox.text.toString(), target.toString())
+            Row {
+                Button(
+                    modifier = Modifier.padding(start = 8.dp),
+                    enabled = false,
+                    onClick = {
 
-        textBox.edit {
-            if (results.isNotEmpty()) {
-                selectCharsIn(
-                    TextRange(
-                        results.first().first,
-                        results.first().second + 1
-                    ).coerceIn(0, textBox.text.length)
-                )
+                    }
+                ) {
+                    Text(text = "<")
+                }
+                Button(
+                    modifier = Modifier.padding(start = 8.dp),
+                    onClick = {
+                        val target = search.text
+
+                        val results =
+                            findAllSubstringOccurrences(textBox.text.toString(), target.toString())
+
+                        textBox.edit {
+                            if (results.isNotEmpty()) {
+                                selectCharsIn(
+                                    TextRange(
+                                        results.first().first,
+                                        results.first().second + 1
+                                    ).coerceIn(0, textBox.text.length)
+                                )
+                            }
+
+                            focusRequester.requestFocus()
+                        }
+                    }
+                ) {
+                    Text(text = ">", modifier = Modifier.heightIn(min = 100.dp, max = 200.dp))
+                }
+
             }
-
-            focusRequester.requestFocus()
-
-//                        scope.launch {
-//                            scrollState.scrollTo(results.first().first)
-//                        }
         }
-    }
-) {
-    Text(text = "Search")
-}
-}
 
         Spacer(modifier = Modifier.height(8.dp))
 

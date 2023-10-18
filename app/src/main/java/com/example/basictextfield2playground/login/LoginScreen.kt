@@ -43,6 +43,7 @@ fun LoginScreenContent(
 
 //        val username = TextFieldState(initialText = "")
         val username = rememberTextFieldState(initialText = "")
+
         BasicTextField2(
             modifier = modifierBTFBorder,
             state = username,

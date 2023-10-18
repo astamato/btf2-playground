@@ -1,6 +1,7 @@
 package com.example.basictextfield2playground.login
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text2.BasicSecureTextField
@@ -31,7 +32,7 @@ fun PasswordFieldTapToReveal(modifier: Modifier = Modifier) {
 
     var textObfuscationMode by remember { mutableStateOf(TextObfuscationMode.RevealLastTyped) }
     val password = rememberTextFieldState(initialText = "onepassword")
-    var icon by remember { mutableIntStateOf(R.drawable.visibility_off_24px ) }
+    var icon by remember { mutableIntStateOf(R.drawable.visibility_off_24px) }
 
     Row(modifier.padding(16.dp)) {
         BasicSecureTextField(
@@ -57,6 +58,34 @@ fun PasswordFieldTapToReveal(modifier: Modifier = Modifier) {
                             }
                         }
                     }
+                }
+                .align(CenterVertically)
+                .padding(start = 8.dp))
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+@PreviewLightDark
+fun PasswordFieldTapToReveal2(modifier: Modifier = Modifier) {
+
+    val password = rememberTextFieldState(initialText = "onepassword")
+    val icon by remember { mutableIntStateOf(R.drawable.visibility_off_24px) }
+
+    var isHidden by remember { mutableStateOf(true) }
+
+    Row(modifier.padding(16.dp)) {
+        BasicSecureTextField(
+            modifier = modifierBTFBorder,
+            state = password,
+            textStyle = textStyleBodyLarge,
+            textObfuscationMode = if (isHidden) TextObfuscationMode.RevealLastTyped else TextObfuscationMode.Visible
+        )
+        Icon(painterResource(id = icon),
+            "content description",
+            modifier = Modifier
+                .clickable {
+                    isHidden = !isHidden
                 }
                 .align(CenterVertically)
                 .padding(start = 8.dp))
