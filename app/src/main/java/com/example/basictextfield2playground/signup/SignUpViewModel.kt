@@ -6,7 +6,6 @@ import androidx.compose.foundation.text2.input.clearText
 import androidx.compose.foundation.text2.input.forEachTextValue
 import androidx.compose.foundation.text2.input.selectAll
 import androidx.compose.foundation.text2.input.textAsFlow
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -15,7 +14,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
@@ -30,22 +28,22 @@ class SignUpViewModel : ViewModel() {
 
     // How to make this part of the rest of the ui state?
 
-    var userNameHasError2 by mutableStateOf(false)
+    var userNameHasError by mutableStateOf(false)
     suspend fun validateUsername() {
         username.forEachTextValue {
-            userNameHasError2 = signUpRepository.isUsernameAvailable(it.toString())
+            userNameHasError = signUpRepository.isUsernameAvailable(it.toString())
         }
     }
 
 
-    val userNameHasError: StateFlow<Boolean> =
+    val userNameHasErrorWithSelect: StateFlow<Boolean> =
         username.textAsFlow()
             .debounce(500)
             .mapLatest {
                 val textContent = it.toString()
                 val hasError =
                     signUpRepository.isUsernameAvailable(textContent)
-                if (hasError) highlight()
+                if (hasError) highlightSelect()
                 return@mapLatest hasError
             }
             .stateIn(
@@ -77,12 +75,8 @@ class SignUpViewModel : ViewModel() {
         username.clearText()
     }
 
-    fun highlight() {
-//        username.edit {
-//            replace(0, length, "")
-//        }
+    fun highlightSelect() {
         username.edit { selectAll() }
     }
 }
-
 
