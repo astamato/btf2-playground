@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text2.BasicSecureTextField
 import androidx.compose.foundation.text2.BasicTextField2
 import androidx.compose.foundation.text2.input.TextFieldLineLimits
+import androidx.compose.foundation.text2.input.TextObfuscationMode
 import androidx.compose.foundation.text2.input.rememberTextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
@@ -97,7 +98,8 @@ fun SignUpScreen(
         BasicSecureTextField(
             modifier = modifierBTFBorder.fillMaxWidth(),
             state = password,
-            textStyle = textStyleBodyLarge
+            textStyle = textStyleBodyLarge,
+//            textObfuscationMode = TextObfuscationMode.Visible
         )
     }
 }
