@@ -6,6 +6,7 @@ import androidx.compose.foundation.text2.input.clearText
 import androidx.compose.foundation.text2.input.forEachTextValue
 import androidx.compose.foundation.text2.input.selectAll
 import androidx.compose.foundation.text2.input.textAsFlow
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -28,6 +29,7 @@ class SignUpViewModel : ViewModel() {
 
     // How to make this part of the rest of the ui state?
 
+    val duserNameHasError by derivedStateOf { userNameHasError }
     var userNameHasError by mutableStateOf(false)
     suspend fun validateUsername() {
         username.forEachTextValue {

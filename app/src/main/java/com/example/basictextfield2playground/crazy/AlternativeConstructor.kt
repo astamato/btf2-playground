@@ -52,7 +52,8 @@ fun AlternativeConstructor(asyncTestViewModel: AsyncTestViewModel = androidx.lif
             onValueChange = {
                 // this is ignored if BTF2 is in focus
 
-                val a = it.uppercase(Locale.getDefault()) + "000"
+                val a = it.uppercase(Locale.getDefault()) + "[Before Async]"
+
                 asyncTestViewModel.asyncOperation(a)
             }
         )

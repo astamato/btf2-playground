@@ -12,6 +12,7 @@ import androidx.compose.foundation.text2.BasicTextField2
 import androidx.compose.foundation.text2.input.TextFieldLineLimits
 import androidx.compose.foundation.text2.input.TextObfuscationMode
 import androidx.compose.foundation.text2.input.rememberTextFieldState
+import androidx.compose.foundation.text2.input.selectAll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.Icon
@@ -76,19 +77,19 @@ fun SignUpScreen(
             signUpViewModel.validateUsername()
         }
 
-//        val userNameHasError by signUpViewModel.userNameHasErrorWithSelect.collectAsStateWithLifecycle()
 
+//        val userNameHasError by signUpViewModel.userNameHasErrorWithSelect.collectAsStateWithLifecycle()
 
 //        if (userNameHasError) {
         if (signUpViewModel.userNameHasError) {
-//            Text(
-//                modifier = Modifier
-//                    .padding(bottom = 8.dp)
-//                    .fillMaxWidth()
-//                    .align(Start),
-//                text = "Username not available. Please choose a different one.",
-//                color = Red
-//            )
+            Text(
+                modifier = Modifier
+                    .padding(bottom = 8.dp)
+                    .fillMaxWidth()
+                    .align(Start),
+                text = "Username not available. Please choose a different one.",
+                color = Red
+            )
         }
 
         Spacer(modifier = Modifier.height(4.dp))

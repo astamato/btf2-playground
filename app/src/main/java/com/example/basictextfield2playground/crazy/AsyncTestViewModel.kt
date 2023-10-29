@@ -20,7 +20,7 @@ class AsyncTestViewModel : ViewModel() {
             delay(500L)
             Log.w("TEST", "Logs async operation")
 
-            val b = (input + "242").lowercase(Locale.getDefault())
+            val b = (input + "[After Async]").lowercase(Locale.getDefault())
             _username.value = b
         }
     }
