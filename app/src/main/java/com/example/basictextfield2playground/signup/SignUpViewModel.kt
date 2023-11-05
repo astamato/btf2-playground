@@ -24,8 +24,7 @@ class SignUpViewModel : ViewModel() {
 
     private val signUpRepository = SignUpRepository()
 
-    var username = TextFieldState("")
-        private set
+    val username = TextFieldState()
 
     // How to make this part of the rest of the ui state?
 
@@ -71,9 +70,9 @@ class SignUpViewModel : ViewModel() {
     }
 
     fun clearField() {
-//        username.edit {
-//            replace(0, length, "")
-//        }
+        username.edit {
+            replace(0, length, "")
+        }
         username.clearText()
     }
 
