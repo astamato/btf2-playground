@@ -75,7 +75,7 @@ fun MarkdownEditor(
             Button(
                 onClick = {
                     username.edit {
-                        if (selectionInChars.length > 0) {
+                        if (!selectionInChars.collapsed) {
                             insert(selectionInChars.start, "**")
                             insert(selectionInChars.end, "**")
                         }

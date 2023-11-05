@@ -21,4 +21,3 @@ object OnlyDigitsTransformation : InputTransformation {
         }
     }
 }
-
